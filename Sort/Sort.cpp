@@ -45,6 +45,24 @@ void Sorting::insertSort()
 	}
 }
 
+void Sorting::selectionSort()
+{
+	sorted = orginal;
+	for (int i = 0; i + 1 < sorted.size(); i++)
+	{
+		int smallest = i;
+		for (int j = i + 1; j < sorted.size(); j++)
+		{
+			if (sorted[smallest] > sorted[j])
+			{
+				smallest = j;
+			}
+		}
+		if (smallest != i)
+			this->swap(smallest, i);
+	}
+}
+
 void Sorting::print() const
 {
 	std::cout << "orginal: ";

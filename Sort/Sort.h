@@ -10,7 +10,7 @@ public:
 
 	void bubbleSort();
 	void insertSort();
-
+	void selectionSort();
 	void print() const;
 
 private:
