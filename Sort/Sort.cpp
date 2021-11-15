@@ -29,6 +29,22 @@ void Sorting::bubbleSort()
 	}
 }
 
+void Sorting::insertSort()
+{
+	sorted = orginal;
+	for (int i = 1; i < sorted.size(); i++)
+	{
+		int value = sorted[i];
+		int j = i;
+		while (j > 0 and sorted[j - 1] > value)
+		{
+			sorted[j] = sorted[j - 1];
+			j--;
+		}
+		sorted[j] = value;
+	}
+}
+
 void Sorting::print() const
 {
 	std::cout << "orginal: ";
