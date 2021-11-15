@@ -11,10 +11,13 @@ public:
 	void bubbleSort();
 	void insertSort();
 	void selectionSort();
+	void quickSort();
 	void print() const;
 
 private:
 	std::vector<int> orginal, sorted;
+	void qsort1(int, int);
+	void qsort2(int, int);
 
 };
 

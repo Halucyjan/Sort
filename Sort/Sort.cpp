@@ -1,8 +1,8 @@
 #include "Sort.h"
 
-Sorting::Sorting(const std::vector<int> &in)
+Sorting::Sorting(const std::vector<int> &data)
 {
-	orginal = in;
+	orginal = data;
 }
 
 void Sorting::swap(int a, int b)
@@ -63,18 +63,77 @@ void Sorting::selectionSort()
 	}
 }
 
-void Sorting::print() const
+void Sorting::quickSort()
 {
-	std::cout << "orginal: ";
-	for (int i = 0; i < orginal.size(); i++)
+	sorted = orginal;
+	int i = 0, j = sorted.size() - 1;
+	this->qsort2(i, j);
+}
+
+void Sorting::qsort1(int left, int right)
+{
+	if (left < right)
 	{
-		std::cout << orginal[i] << " ";
-	}
-	std::cout << std::endl << " sorted: ";
-	for (int i = 0; i < sorted.size(); i++)
-	{
-		std::cout << sorted[i] << " ";
+		int i = left, j = right;
+
+		int pivot = sorted[(i + j) / 2];
+		while (i < j)
+		{
+			while (sorted[i] < pivot)
+				i++;
+
+			while (sorted[j] > pivot)
+				j--;
+
+			this->swap(i, j);
+		}
+
+		this->print();
+
+		this->qsort1(left, pivot - 1);
+
+
+		this->qsort1(pivot + 1, right);
 	}
 }
 
+void Sorting::qsort2(int left, int right)
+{
+	if (left < right)
+	{
+		int i = left -1, j = left;
+
+		int pivot = sorted[right];
+
+		for (j = left; j <= right; j++)
+		{
+			if (sorted[j] < pivot)
+			{
+				i++;
+				this->swap(i, j);
+			}
+		}
+		this->swap(i+1, right);
+		qsort2(left, i);
+		qsort2(i + 1, right);
+	}
+
+	
+}
+
+void Sorting::print() const
+{
+	std::cout << "orginal: ";
+	for (int value : orginal)
+	{
+		std::cout << value << " ";
+	}
+
+	std::cout << std::endl << " sorted: ";
+	for (int value : sorted)
+	{
+		std::cout << value << " ";
+	}
+	//std::cout << std::endl;
+}
 
