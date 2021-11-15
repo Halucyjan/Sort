@@ -19,7 +19,6 @@ void Sorting::bubbleSort()
 	sorted = orginal;
 	for (int i = 0; i + 1 < sorted.size(); i++)
 	{
-		//int largest = sorted[i];
 		for (int j = i + 1; j < sorted.size(); j++)
 		{
 			if (sorted[j] < sorted[i])
